@@ -23,7 +23,7 @@ CompanyName = 'Unknown'
 Copyright = '(c) 2015 Craig Buchanan. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Manage Windows shortcuts.'
+Description = 'Manage Windows shortcuts with PowerShell.'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '2.0'
