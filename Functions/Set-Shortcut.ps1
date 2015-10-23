@@ -21,16 +21,29 @@ function Set-Shortcut {
 
     [CmdletBinding()]
     param ( 
+        [Parameter(Mandatory=$True,Position=1)]
         [string]$LinkPath, 
+
+        [Parameter(Mandatory=$True,Position=2)]
         [string]$TargetPath, 
+
+        [Parameter(Mandatory=$False,Position=3)]
         [string]$Arguments
     )
 
-    $WshShell = New-Object -comObject WScript.Shell
+    BEGIN {
+        $WshShell = New-Object -comObject WScript.Shell
+        Write-Verbose $WshShell
 
-    $Shortcut = $WshShell.CreateShortcut($LinkPath)
-    $Shortcut.TargetPath = $TargetPath
-    $Shortcut.Arguments = $Arguments
-    $Shortcut.Save()
+        Write-Verbose "LinkPath: $LinkPath"
+        Write-Verbose "TargetPath: $TargetPath"
+        Write-Verbose "Arguments: $Arguments"
+    }
+    PROCESS {
+        $Shortcut = $WshShell.CreateShortcut($LinkPath)
+        $Shortcut.TargetPath = $TargetPath
+        $Shortcut.Arguments = $Arguments
+        $Shortcut.Save()
+    }
 
 }
